@@ -1,0 +1,11 @@
+img.errorImg {
+  width: 100%;
+}
+
+span.errorSpan {
+  display: block;
+  text-align: center;
+  color: red;
+  font-weight: bold;
+  text-transform: uppercase;
+}

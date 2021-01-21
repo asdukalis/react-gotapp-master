@@ -29,7 +29,7 @@ export default class GotService {
   //!Books
   async getAllBooks() {
     const res = await this.getResource('/books/');
-    return res.map(this._transformCharacter);
+    return res.map(this._transformBook);
   }
 
   async getBook(id) {
@@ -48,32 +48,42 @@ export default class GotService {
     return this._transformHouse(house);
   }
 
-  _transformCharacter(char) {
-    return {
-      name: char.name,
-      gender: char.gender,
-      born: char.born,
-      died: char.died,
-      culture: char.culture,
-    };
-  }
-  _transformHouse(house) {
-    return {
-      name: house.name,
-      region: house.region,
-      words: house.words,
-      titles: house.titles,
-      overlord: house.overlord,
-      ancestralWeapons: house.ancestralWeapons,
-    };
+  isSet(data) {
+    if (data) {
+      return data;
+    } else {
+      return 'No data :(';
+    }
   }
 
-  _transformBook(book) {
+  _transformCharacter = (char) => {
+    // console.log(char);
     return {
-      name: book.name,
-      numberOfPages: book.numberOfPages,
-      publiser: book.publiser,
-      released: book.released,
+      name: this.isSet(char.name),
+      gender: this.isSet(char.gender),
+      born: this.isSet(char.born),
+      died: this.isSet(char.died),
+      culture: this.isSet(char.culture),
     };
-  }
+  };
+
+  _transformHouse = (house) => {
+    return {
+      name: this.isSet(house.name),
+      region: this.isSet(house.region),
+      words: this.isSet(house.words),
+      titles: this.isSet(house.titles),
+      overlord: this.isSet(house.overlord),
+      ancestralWeapons: this.isSet(house.ancestralWeapons),
+    };
+  };
+
+  _transformBook = (book) => {
+    return {
+      name: this.isSet(book.name),
+      numberOfPages: this.isSet(book.numberOfPages),
+      publiser: this.isSet(book.publiser),
+      released: this.isSet(book.released),
+    };
+  };
 }

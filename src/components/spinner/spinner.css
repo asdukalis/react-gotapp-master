@@ -103,9 +103,10 @@
   transform-origin: 142px 58px;
 }
 .loadingio-spinner-spin-yptc5qkck8k {
+  margin: 0 auto;
   width: 200px;
   height: 200px;
-  display: inline-block;
+  display: block;
   overflow: hidden;
   background: transparent;
 }
